@@ -1,0 +1,40 @@
+% !TEX program = lualatex
+% !TEX spellcheck = it_IT
+% !TEX root = ../tlinstall.tex
+
+\section{Aggiornare i pacchetti}
+
+%\begin{figure}
+%\centering
+%\includegraphics[width=.7\textwidth]{tlmgr}
+%\caption{\tt tlmgr gui}
+%\label{fig:gui}
+%\end{figure}
+
+Per aggiornare \lstinline£tlmgr£ stesso basta dare
+\begin{lstlisting}
+tlmgr update --self
+\end{lstlisting}
+Per sapere quali pacchetti hanno bisogno di essere aggiornati fare eseguire questo comando
+\begin{lstlisting}
+tlmgr update --list
+\end{lstlisting}
+Per aggiornare tutti i pacchetti aggiornabili
+\begin{lstlisting}
+tlmgr update --all
+\end{lstlisting}
+Il consiglio è, finita la procedura di installazione, di aggiornare {\sf tlmgr} stesso e di aggiornare, se possibile, tutti i pacchetti aggiornabili: questo perché nella \lstinline£texlive.iso£ tutto è congelato allo stesso e identico stato del rilascio, col rischio di trovarsi materiale non aggiornato. Se si vuole aggiornare un singolo pacchetto, si può usare
+\begin{lstlisting}
+tlmgr update ?!nome pacchetto!?
+\end{lstlisting}
+
+%\begin{nota}
+%Se il terminale fa ancora paura, si può optare per questa alternativa
+%\begin{lstlisting}
+%tlmgr gui
+%\end{lstlisting}
+%che apre la finestra in figura~\ref{fig:gui}. Da lì si possono fare tutte le azioni appena viste e anche altre. Serve che ci sia il modulo {\sf Tk}, però: per installarlo da terminale
+%\begin{lstlisting}
+%cpan -f Tk
+%\end{lstlisting}
+%\end{nota}

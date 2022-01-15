@@ -1,0 +1,3 @@
+# Minimal install, with the aid of some scripts.
+
+Yet to be written...

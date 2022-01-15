@@ -1,0 +1,63 @@
+% !TEX program = lualatex
+% !TEX spellcheck = it_IT
+% !TEX root = ../tlinstall.tex
+
+\section{Installazione completa}
+
+Avvisiamo da subito, però, che questa via comporta uno svantaggio non da poco. Allo stato delle cose questa distribuzione ingombra almeno 3GB sul disco, e chi chiede una installazione più snella non ha tutti i torti: c'è una mole enorme di pacchetti che un utente medio probabilmente non userà mai.
+
+\begin{enumerate}
+
+\item Bisogna scaricare il file \lstinline£texlive.iso£. Andare su
+\begin{center}
+\url{http://www.tug.org/texlive/acquire-iso.html}
+\end{center}
+e poi cliccare su {\sf Download from a nearby CTAN mirror}. Su questo primo passo c'è da dire una cosa: occorre armarsi di mooolta pazienza\dots{} Questo è forse l'ostacolo maggiore che si può incontrare.
+
+\item Creiamo la cartella \lstinline£iso£ all'interno della cartella \lstinline£media£
+\begin{lstlisting}
+sudo mkdir /media/iso
+\end{lstlisting}
+e montiamoci \lstinline£texlive.iso£
+\begin{lstlisting}
+sudo mount -o loop ?!dove si trova!?/texlive.iso /media/iso
+\end{lstlisting}
+Di solito quello che si scarica col browser va a finire in \lstinline£~/Scaricati£.
+
+\item Possiamo iniziare l'installazione
+\begin{lstlisting}
+sudo /media/iso/install-tl
+\end{lstlisting}
+Durante questo processo non sono richiesti particolari interventi dall'utente: quando viene chiesto dal terminale quale tipo di installazione effettuare, scegliere quella completa digitando {\sf I} (la lettera \q{i} maiuscola) e premendo il tasto \invio{}.\footnote{Questo passaggio per essere portato al termine con successo richiede un po' meno tempo: dai 15 ai 20 minuti.} Potrebbe essere utile sapere che tutto quello che viene installato di default va a finire in \lstinline£/usr/local/texlive£.
+
+\item Finita l'installazione \lstinline£texlive.iso£ non ci serve più, perciò smontiamolo
+\begin{lstlisting}
+sudo umount /media/iso
+\end{lstlisting}
+e possiamo eliminare anche la cartella \lstinline£/media/iso£
+\begin{lstlisting}
+sudo rm -rf /media/iso
+\end{lstlisting}
+
+\item Impartiamo il seguente comando
+\begin{lstlisting}
+xdg-open ~/.bash_aliases
+\end{lstlisting}
+che apre una pagina di file di testo.\footnote{Questo file può darsi che non esista (anzi è probabile che non esista) e quindi bisogna crearselo: si può fare col comando \lstinline£touch ~/.bash_aliases£.} Copiamo alla fine del file che viene aperto le seguenti righe:
+\begin{lstlisting}
+texlive="/usr/local/texlive/?!anno!?"
+PATH=$texlive/bin/x86_64-linux:$PATH
+export PATH
+MANPATH=$texlive/texmf-dist/doc/man:$MANPATH
+export MANPATH
+INFOPATH=$texlive/texmf-dist/doc/info:$INFOPATH
+export INFOPATH
+
+alias tlmgr='sudo env PATH=$PATH tlmgr'
+\end{lstlisting}
+Salviamo ed chiudiamo la finestra. Facciamo assimilare le novità introdotte:
+\begin{lstlisting}
+. ~/.bash_aliases
+\end{lstlisting}
+
+\end{enumerate}

@@ -1,0 +1,15 @@
+% !TEX program = lualatex
+% !TEX spellcheck = it_IT
+% !TEX root = ../tlinstall.tex
+
+\section{Rimuovere \texlive{}}
+
+Può succedere che, per un motivo o un altro, si voglia disinstallare \texlive{}. In realtà, sicuramente dovrete fare questa manovra: infatti, per passare da una versione alla successiva, bisogna eliminare la distribuzione installata per fare posto alla nuova.\footnote{I rilasci avvengono annualmente in primavera. Solitamente gli utenti tendono a tenersi la versione vecchia per qualche mese per poi fare queste operazioni durante l'estate. In tutto questo potrebbe esserci una qualche consolazione: siete in periodo di pausa e quindi questo avanzamento di versione non vi toglierà (si spera) troppo tempo al vostro lavoro. Uno potrebbe pensare di non avanzare di versione, ma questa scelta si paga visto che le vecchie versioni non ricevono più aggiornamenti. Si consiglia di assecondare questo ciclo di \q{creazione e distruzione}, quanto meno avere pazienza e sperare in dei cambiamenti.} Ci sono principalmente due vie: 
+\begin{enumerate}
+\item usando \lstinline£tlmgr£:
+\begin{lstlisting}
+tlmgr remove --force --all
+\end{lstlisting}
+\item sporcandosi le mani, come suggerito in~\cite{exch:uninstall}.
+\end{enumerate}
+Io consiglio il secondo metodo: sebbene molto lungo e scomodo, fa una pulizia meticolosa di \texlive{}.

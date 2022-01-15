@@ -1,0 +1,62 @@
+% !TEX program = lualatex
+% !TEX root = ./tlinstall.tex
+
+\documentclass[ structure      = article
+              , maketitlestyle = standard
+              , secstyle       = center
+              , secfont        = roman
+              , liststyle      = aligned
+              , quotesize      = normalsize
+              , headerstyle    = center
+              , footnotestyle  = superscript
+              ]{suftesi}
+
+% gestione font
+\usepackage[no-math]{fontspec}
+\setmainfont{Linux Libertine O}
+\setmonofont{Ubuntu Mono}[Scale=MatchUppercase]
+\usepackage{anyfontsize}
+
+% gestione lingue
+\usepackage{polyglossia}
+\setmainlanguage{italian}
+
+% virgolette
+\usepackage[autostyle,italian=quotes]{csquotes}
+\newcommand\q\enquote
+
+% riferimenti incrociati
+\usepackage{hyperref}
+\hypersetup{ breaklinks
+           , hidelinks
+           , linktocpage
+           }
+
+% bibliografia
+\usepackage[backend=biber]{biblatex}
+\addbibresource{mybib.bib}
+\nocite{*}
+
+% immagini
+\usepackage{graphicx}
+%\graphicspath{{figure}}
+
+% codici
+\usepackage{listings}
+\lstset{ basicstyle      = \ttfamily
+       , escapeinside    = {?!}{!?}
+       , escapebegin     = {\normalfont\em$\langle$\kern-1pt}
+       , escapeend       = {$\rangle$}
+       , backgroundcolor = \color{gray!10!white}
+       }
+
+% abstract
+\usepackage{abstract}
+
+% comandi personali
+\newcommand\texlive{\TeX{}{\em live}}
+\newcommand\gnulinux{{\sf GNU/Linux}}
+
+% tasti tastiera
+\usepackage{menukeys}
+\newcommand\invio{\keys\return}

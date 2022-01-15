@@ -1,0 +1,42 @@
+% !TEX program = lualatex
+% !TEX spellcheck = it_IT
+% !TEX root = ../tlinstall.tex
+
+\section{Installazione minimale}
+
+In questa sezione vogliamo fornire un'alternativa forse più praticabile. Installeremo una \texlive{} molto minimale ed anche se questa base è troppo povera, può essere tranquillamente arricchita installando pacchetti. Avvertiamo che se si intende seguire questa strada, bisogna essere connessi ad internet durante tutta la procedura.
+
+Scarichiamo \lstinline£install-tl-unx.tar.gz£ dal sito internet
+\begin{center}
+\url{https://tug.org/texlive/acquire-netinstall.html},
+\end{center}
+decomprimiamola e apriamo il terminale all'interno della cartella estratta. A questo punto iniziamo l'installazione:
+
+\begin{lstlisting}
+sudo ./install-tl --scheme minimal
+\end{lstlisting}
+
+Osserviamo che questo passo richiede i privilegi di amministrazione. L'unico intervento da parte dell'utente è quello di premere i pulsanti \lstinline£I£ e \lstinline£Invio£ per confermare.
+
+Una volta che \lstinline£install-tl£ ha terminato, fare quanto indicato nel punto (5) della sezione precedente.
+
+Possiamo così ora iniziare il lavoro di post-installazione. Nella nostra distribuzione non sono presenti ad esempio \lstinline£pdflatex£, \lstinline£lualatex£ e \lstinline£xelatex£, che invece sono molto usati. Li si installa con
+
+\begin{lstlisting}
+tlmgr install latex
+\end{lstlisting}
+
+Una programma molto comodo da avere è \lstinline£texliveonfly£: scritto in \lstinline£Python£, durante la creazione dei nostri documenti installa i pacchetti che mancano. Il suo uso è molto semplice:
+\begin{lstlisting}
+texliveonfly -c ?!compilatore!? ?!file da compilare!?
+\end{lstlisting}
+dove {\em compilatore} può essere ad esempio \lstinline£pdflatex£, \lstinline£lualatex£ oppure \lstinline£xelatex£. Se lo si vuole installare,
+
+\begin{lstlisting}
+tlmgr install texliveonfly
+\end{lstlisting}
+
+Avrete capito, insomma, che i nuovi pacchetti si installano proprio così
+\begin{lstlisting}
+tlmgr install ?!nome pacchetto!?
+\end{lstlisting}
